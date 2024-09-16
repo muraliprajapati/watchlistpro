@@ -1,0 +1,619 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Primary Meta Tags -->
+  <title>Watchlist Pro for Zerodha Kite - A chrome extension that brings advanced watchlist to Kite</title>
+  <meta name="title"
+    content="Watchlist Pro for Zerodha Kite - A chrome extension that brings advanced watchlist  to Kite" />
+  <meta name="description"
+    content="Watchlist Pro is an awesome tool you need to have with your Kite account. It brings lots of features to manage and track your stocks." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://muraliprajapati.github.io/watchlistpro-website/" />
+  <meta property="og:title"
+    content="Watchlist Pro for Zerodha Kite - A chrome extension that brings advanced watchlist  to Kite" />
+  <meta property="og:description"
+    content="Watchlist Pro is an awesome tool you need to have with your Kite account. It brings lots of features to manage and track your stocks." />
+  <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://muraliprajapati.github.io/watchlistpro-website/" />
+  <meta property="twitter:title"
+    content="Watchlist Pro for Zerodha Kite - A chrome extension that brings advanced watchlist  to Kite" />
+  <meta property="twitter:description"
+    content="Watchlist Pro is an awesome tool you need to have with your Kite account. It brings lots of features to manage and track your stocks." />
+  <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+  <link href="./build.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="flex flex-col min-h-screen">
+    <header>
+      <nav class="bg-white p-2">
+        <div class="container mx-auto flex justify-between items-center">
+          <a class="flex items-center justify-center" href="#">
+            <i data-lucide="binoculars" class="h-6 w-6"></i>
+            <span class="ml-2 text-xl">Watchlist Pro for Kite</span>
+          </a>
+
+          <div class="md:hidden flex flex-col justify-center items-center">
+            <button id="mobile-menu-button" class="text-black hover:text-slate-400 focus:outline-none">
+              <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+          </div>
+
+          <div class="hidden md:flex space-x-4">
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#features">
+              Features
+            </a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#get-started">
+              Get started
+            </a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#pre-made-watchlists">
+              Pre-made Watchlists
+            </a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#faqs">
+              FAQs
+            </a>
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a class="block py-1 text-sm font-medium hover:underline underline-offset-4" href="#features">
+              Features
+            </a>
+            <a class="block py-1 text-sm font-medium hover:underline underline-offset-4" href="#get-started">
+              Get started
+            </a>
+            <a class="block py-1 text-sm font-medium hover:underline underline-offset-4" href="#pre-made-watchlists">
+              Pre-made Watchlists
+            </a>
+            <a class="block py-1 text-sm font-medium hover:underline underline-offset-4" href="#faqs">
+              FAQs
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-1">
+      <section class="flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-36 bg-black text-white">
+        <div class="flex flex-col items-center justify-between container px-4 md:px-6">
+          <div class="flex flex-[2] flex-col items-center text-center">
+            <div class="mb-4">
+              <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                Watchlist Pro for Zerodha <span class="text-[#F6461A]">Kite</span>
+              </h1>
+              <p class="mx-auto max-w-[700px] text-gray-400 my-2 md:text-xl">
+                A chrome extension that brings advanced TradingView like watchlists to Kite
+              </p>
+            </div>
+            <div class="mt-2 mb-8 flex flex-col md:flex-row gap-2">
+              <a class="bg-white text-black p-2 rounded" href="">
+                <i data-lucide="download" class="inline-block h-4 w-4"></i>
+                Download extension</a>
+              <a class="bg-transparent text-white p-2 border rounded cursor-pointer" href="#get-started">Get started</a>
+            </div>
+          </div>
+          <div class="flex-[4] justify-center p-2">
+            <div
+              class="border border-slate-800 rounded-lg shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+              <img class="p-1 rounded-xl object-contain" src="./images/hero-img-full.jpg" alt="Watchlist Pro Image" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="features" class="flex justify-center w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+        <div class="container px-4 md:px-6">
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Key Features</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="clipboard-list" class="h-12 w-12 mb-4 text-green-500"></i>
+              <h3 class="text-xl font-bold mb-2">Watchlists & Stocks</h3>
+              <p class="text-gray-600">Create as many watchlists as you want. No limit. Import & track 1000 stocks in a
+                watchlist. Want to move a stock to another list? You can do that!</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="zap" class="h-12 w-12 mb-4 text-indigo-500"></i>
+              <h3 class="text-xl font-bold mb-2">Integrates with Kite</h3>
+              <p class="text-gray-600">Analyse stock charts directly in Kite with single click. Comes with keyboard
+                navigation so you don't even have to click. Just press arrow key and move to next stock.</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="lock" class="h-12 w-12 mb-4 text-amber-500"></i>
+              <h3 class="text-xl font-bold mb-2">Safe & Secure</h3>
+              <p class="text-gray-600">100% safe & secure. No access to your Kite account information. The extension
+                data never leaves your computer.</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="toggle-right" class="h-12 w-12 mb-4 text-blue-500"></i>
+              <h3 class="text-xl font-bold mb-2">Light & Dark Theme</h3>
+              <p class="text-gray-600">Easily switch between Light and Dark theme to match with your Kite theme.</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="history" class="h-12 w-12 mb-4 text-rose-500"></i>
+              <h3 class="text-xl font-bold mb-2">Backup & Restore</h3>
+              <p class="text-gray-600">Easily backup & restore your watchlists so that you can import your watchlists to
+                other devices.</p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="indian-rupee" class="h-12 w-12 mb-4 text-slate-500"></i>
+              <h3 class="text-xl font-bold mb-2">Free Forever</h3>
+              <p class="text-gray-600">All of this is absolutely free. Just download and start using it. You can buy me
+                a chai if you like :)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="get-started" class="flex justify-center w-full py-12 md:py-24 lg:py-32">
+        <div class="container px-4 md:px-6">
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Get started</h2>
+          <div class="max-w-xl mx-auto p-4">
+            <div class="flow-root">
+              <ul class="-mb-8">
+                <li>
+                  <div class="relative pb-8">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">1</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0">
+                        <h4 class="font-medium text-gray-900 mr-2 text-lg">Download & add the extension from
+                          Chrome Web Store</h4>
+                        <div class="mt-2 text-gray-700">
+                          <ul class="list-disc">
+                            <li>Click here to download the extension</li>
+                            <li>
+                              <div>
+                                <p>Once the extension is added, pin it from the extensions list for easy access</p>
+                                <img src="./images/pin-extension.jpg" alt="" class="rounded-lg my-3 h-[15rem]">
+                              </div>
+                            </li>
+                            <li class="font-semibold">Watchlist Pro will only open on Kite's webpage</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="relative pb-8">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0">
+                        <div class="text-md text-gray-500">
+                          <h4 class="font-medium text-gray-900 mr-2 text-lg">Enable Watchlist Pro for Kite</h4>
+                        </div>
+                        <div class="mt-2 text-gray-700">
+                          <ul class="list-disc">
+                            <li>Login to your Kite account</li>
+                            <li>
+                              <p>Open <span class="font-semibold">any stock's chart in new tab</span> (Popout chart) or
+                                click on the link below
+                                to open <span class="font-semibold">HDFCBANK</span> chart</p>
+                              <div class="text-ellipsis overflow-hidden whitespace-nowrap">
+                                <a class="underline underline-offset-4 text-ellipsis text-blue-500"
+                                  href="https://kite.zerodha.com/chart/ext/tvc/NSE/HDFCBANK/341249?theme=dark">https://kite.zerodha.com/chart/ext/tvc/NSE/HDFCBANK/341249?theme=dark</a>
+                              </div>
+                              <img class="rounded-lg my-3 h-[15rem]" src="./images/open-popup-chart.jpg" alt="">
+                            </li>
+                            <li>
+                              <p>Now click on the pinned Watchlist Pro icon from top bar to open the Watchlist Pro on
+                                right side</p>
+                              <a href="./images/default-watchlist.jpg" target="_blank">
+                                <img class="rounded-lg my-3 h-[15rem] object-contain cursor-pointer"
+                                  src="./images/default-watchlist.jpg" alt="">
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="relative pb-8">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">3</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0">
+                        <div class="text-md text-gray-500">
+                          <h4 href="#" class="font-medium text-gray-900 mr-2 text-lg">All set to use 🎉</h4>
+                        </div>
+                        <div class="mt-2 text-gray-700">
+                          <ul class="list-disc">
+                            <li>
+                              <p>You will see an empty Default watchlist</p>
+                              <p>
+                                Click on <i class="inline-block h-4 w-4" data-lucide="circle-plus"></i> icon to search
+                                and add stocks to your list
+                              </p>
+                              <img class="rounded-lg my-3 h-[15rem] object-contain" src="./images/add-new-symbol.jpg"
+                                alt="">
+                            </li>
+                            <li>Click on a stock from the watchlist to view the chart on left side</li>
+                            <li>
+                              <p class="font-semibold">Click on "Default" dropdown menu to create new watchlists or
+                                switch between them.</p>
+                              <img class="rounded-lg my-3 h-[15rem] object-contain" src="./images/create-watchlist.jpg"
+                                alt="">
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="relative pb-8">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">4</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0">
+                        <div class="text-md text-gray-500">
+                          <div>
+                            <h4 href="#" class="font-medium text-gray-900 mr-2 text-lg">Import stocks</h4>
+                          </div>
+                        </div>
+                        <div class="mt-2 text-gray-700">
+                          <ul class="list-disc">
+                            <li>
+                              You can import upto 1000 stocks into one watch list.
+                            </li>
+                            <li>Select the watchlist you want to import into and click the <i
+                                class="inline-block h-4 w-4" data-lucide="upload"></i> (Import symbols) icon</li>
+                            <li>
+                              <p>Paste the stocks in <span class="font-semibold">EXCHANGE:SYMBOL</span> format separated
+                                by new line. Eg.
+                                "NSE:TCS"</p>
+                              <img class="rounded-lg mt-2 h-[15rem] object-contain" src="./images/import-symbols.jpg"
+                                alt="">
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="relative pb-8">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">5</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0">
+                        <div class="text-md text-gray-500">
+                          <div>
+                            <h4 href="#" class="font-medium text-gray-900 mr-2 text-lg">That's it 🚀</h4>
+                          </div>
+                        </div>
+                        <div class="mt-2 text-gray-700">
+                          <p>Hope you will love using Watchlist Pro! Just scroll down to checkout pre-made watchlists.
+                          </p>
+                          <p>Refer to FAQs below to find out more.</p>
+                          <p>Please drop a
+                            review on Chrome Web Store and reach out to me at <a class="underline underline-offset-4"
+                              href="mailto:mpdevlabs@gmail.com">mpdevlabs@gmail.com</a> with your queries and
+                            suggestions.</p>
+                          <p>Share it with your friends, family and in trading groups 🙏.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="pre-made-watchlists"
+        class="bg-black text-white flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-36">
+        <div class="flex flex-[2] flex-col items-center text-center">
+          <div class="mb-4">
+            <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+              Pre-made watchlists for Watchlist <span class="text-[#F6461A]">Pro</span>
+            </h1>
+            <p class="mx-auto max-w-[700px] text-gray-400 my-2 md:text-xl">
+              Just copy the list and import into Watchlist Pro
+            </p>
+          </div>
+          <div class="max-w-xl mx-auto p-4 text-left">
+            <div class="flow-root">
+              <ul class="-mb-8">
+                <li>
+                  <div class="relative pb-8">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">1</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0 text-white">
+                        <h4 class="font-medium text-white mr-2 text-lg">Checkout the watchlists</h4>
+                        <div class="mt-2">
+                          <ul class="list-disc">
+                            <li>Find all NSE & BSE stocks watchlist below</li>
+                            <li>Click on a watchlist and copy the content of the page.</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="relative pb-8">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">2</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0 text-white">
+                        <div class="text-md">
+                          <h4 class="font-medium mr-2 text-lg">Create & Import</h4>
+                        </div>
+                        <div class="mt-2">
+                          <ul class="list-disc">
+                            <li>
+                              <p>
+                                Create a new watchlist in Watchlist Pro
+                              </p>
+                              <img class="rounded-lg my-3 h-[15rem] object-contain cursor-pointer"
+                                src="./images/create-watchlist.jpg" alt="">
+                            </li>
+                            <li>
+                              <p>Click on the Import symbols icon (<i class="inline-block h-4 w-4"
+                                  data-lucide="upload"></i>)</p>
+                            </li>
+                            <li>
+                              <p>Paste the content you copied and click Add to watchlist</p>
+                              <img class="rounded-lg my-3 h-[15rem] object-contain cursor-pointer"
+                                src="./images/import-symbols.jpg" alt="">
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="relative pb-8 text-white">
+                    <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                    <div class="relative flex items-start space-x-3">
+                      <div>
+                        <div class="relative px-1">
+                          <div
+                            class="h-8 w-8 bg-blue-500 rounded-full ring-8 ring-white flex items-center justify-center">
+                            <span class="text-white font-bold">3</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="min-w-0 flex-1 py-0">
+                        <div class="text-md">
+                          <div>
+                            <h4 href="#" class="font-medium mr-2 text-lg">That's it 🚀</h4>
+                          </div>
+                        </div>
+                        <div class="mt-2">
+                          <p>You just imported a pre-made watchlist</p>
+                          <p>Repeat the same for other watchlists you want to add</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="watchlists" class="flex justify-center w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+        <div class="container px-4 md:px-6">
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Pre-made Watchlists</h2>
+          <div class="text-center">
+            <p>To be added soon</p>
+          </div>
+        </div>
+      </section>
+      <section id="faqs" class="flex justify-center w-full py-12 md:py-24 lg:py-32 bg-white">
+        <div class="container px-4 md:px-6">
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Frequently Asked Questions
+            (FAQs)</h2>
+          <div class="mx-auto space-y-4">
+            <div class="mx-auto mt-8 grid max-w-xl divide-y divide-neutral-200">
+              <div class="py-5">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span> Is Watchlist Pro safe to use? Does it have access to my demat account?</span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+                    Watchlist Pro is 100% safe & secure. It only stores the watchlists you have created in Chrome
+                    browser. The data never leaves the browser. It doesn't have access to your Demat account.
+                  </p>
+                </details>
+              </div>
+              <div class="py-5">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span>Can I add F&O symbols to Watchlist Pro?</span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+                    As of now, you can only add cash segment's listed stocks (NSE & BSE).
+                  </p>
+                </details>
+              </div>
+              <div class="py-5">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span>Can I sync my existing Kite Marketwatch lists?</span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+                    Sadly no. As you know, Watchlist Pro doesn't have access to your Kite account so there is no way to
+                    sync the watchlist.
+                  </p>
+                </details>
+              </div>
+              <div class="py-5">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span> I am not able to search and add newly listed stocks. How can I fix it?</span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+                    Watchlist Pro comes with all NSE & BSE listed stock as on 16 Sept 2024. In order to get newly listed
+                    stocks, click on the settings icon on top and click Update symbols.
+                  </p>
+                </details>
+              </div>
+              <div class="py-5">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span> How can I access my watchlists on another Chrome browser?</span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+                    Since Watchlist Pro doesn't sync data across Google account, you will have to first backup the
+                    watchlists and restore the backup file on another Chrome browser. Click on settings icon to Backup &
+                    Restore watchlists.
+                  </p>
+                </details>
+              </div>
+              <div class="py-5">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span>Can I bulk import stocks into watchlist?</span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+                    Yes, you can import upto 1000 stocks in your watchlist. Just click the import symbols icon and paste
+                    the stocks you want to import in expected format.
+                  </p>
+                </details>
+              </div>
+              <div class="py-5">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-medium">
+                    <span> Do you have some pre-made watchlists that I can import?</span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
+                    Yes, go to watchlists page and find the one you want to add.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+      <p class="text-xs text-gray-500">
+        <i data-lucide="send" class="h-4 w-4 inline"></i>
+        <a class="inline" href="mailto:mpdevlabs@gmail.com">mpdevlabs@gmail.com</a>
+      </p>
+      <nav class="sm:ml-auto flex gap-4 sm:gap-6">
+        <a class="text-xs hover:underline underline-offset-4" href="#">
+          Write a review
+        </a>
+      </nav>
+    </footer>
+  </div>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
