@@ -4,7 +4,8 @@
   "description": "Advanced TradingView like watchlists for Zerodha Kite.",
   "main": "index.js",
   "scripts": {
-    "css": "npx tailwindcss -i ./styles.css -o ./build.css --minify"
+    "css": "npx tailwindcss -i ./styles.css -o ./build.css --minify",
+    "css:w": "npx tailwindcss -i ./styles.css -o ./build.css --watch"
   },
   "keywords": [],
   "author": "",
