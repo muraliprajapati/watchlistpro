@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchlist Pro Import Tool</title>
+  <link href="build.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex flex-col items-center justify-center p-4">
+  <div class="w-full max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden">
+    <header class="bg-blue-600 text-white p-6 text-center">
+      <h1 class="text-3xl font-bold">Watchlist Pro Import Tool</h1>
+    </header>
+    <div class="p-6 space-y-6">
+      <div class="flex space-x-4">
+        <label class="inline-flex items-center">
+          <input type="radio" name="exchange" value="NSE" checked class="form-radio text-blue-600">
+          <span class="ml-2">NSE</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="exchange" value="BSE" class="form-radio text-blue-600">
+          <span class="ml-2">BSE</span>
+        </label>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label for="inputText" class="block text-sm font-medium text-gray-700">Input</label>
+          <textarea id="inputText" placeholder="Enter symbols, one per line" class="w-full h-40 px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+        </div>
+        <div class="space-y-2">
+          <label for="outputText" class="block text-sm font-medium text-gray-700">Output</label>
+          <textarea id="outputText" readonly placeholder="Output for Watchlist Pro" class="w-full h-40 px-3 py-2 text-gray-700 border rounded-lg bg-gray-50"></textarea>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <button onclick="processInput()" class="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200">
+          Convert
+        </button>
+        <button onclick="copyToClipboard()" class="w-full sm:w-auto px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md border border-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200">
+          Copy to clipboard
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function processInput() {
+      const inputText = document.getElementById('inputText').value.trim();
+      const lines = inputText.split('\n');
+      const exchange = document.querySelector('input[name="exchange"]:checked').value;
+      const outputLines = lines.map(line => `${exchange}:${line.trim()}`);
+      document.getElementById('outputText').value = outputLines.join('\n');
+    }
+
+    function copyToClipboard() {
+      const outputText = document.getElementById('outputText');
+      outputText.select();
+      document.execCommand('copy');
+      
+      // Create and show a toast notification
+      const toast = document.createElement('div');
+      toast.textContent = 'Copied to clipboard!';
+      toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg transition-opacity duration-300';
+      document.body.appendChild(toast);
+      
+      // Remove the toast after 3 seconds
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
