@@ -353,6 +353,215 @@
       max-width: 480px;
     }
 
+    /* ── SOCIAL PROOF ── */
+    .proof-section {
+      background: var(--navy);
+      border-top: 1px solid var(--navy-border);
+      border-bottom: 1px solid var(--navy-border);
+      padding: 72px 24px;
+    }
+
+    .stats-row {
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 64px;
+    }
+
+    .stat-item {
+      flex: 1;
+      max-width: 220px;
+      text-align: center;
+      padding: 0 32px;
+      position: relative;
+    }
+
+    .stat-item+.stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 96px;
+      width: 1px;
+      background: var(--navy-border);
+    }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-number span {
+      color: var(--teal);
+    }
+
+    .stat-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      margin-bottom: 8px;
+    }
+
+    .star {
+      color: #F59E0B;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* testimonials */
+    .testimonials-label {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--teal-border);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .testimonial-stars .star {
+      font-size: 14px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .testimonial-text::before {
+      content: '\201C';
+      color: var(--teal);
+      font-size: 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 0;
+      vertical-align: -4px;
+      margin-right: 3px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--navy-border);
+    }
+
+    .author-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .author-meta {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin-top: 2px;
+    }
+
+    .cws-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      color: var(--teal);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cws-badge:hover {
+      background: rgba(0, 212, 170, 0.2);
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonials-grid .testimonial-card:last-child {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .stats-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .stat-item+.stat-item::before {
+        display: none;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid .testimonial-card:last-child {
+        display: flex;
+      }
+    }
+
     /* ── FEATURES ── */
     #features {
       background: var(--navy-mid);
@@ -1050,7 +1259,95 @@
       </div>
     </div>
   </section>
+  <!-- SOCIAL PROOF -->
+  <section class="proof-section">
+    <div class="container">
 
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-number">3000<span>+</span></div>
+          <div class="stat-desc">Active traders using<br>Watchlist Pro</div>
+        </div>
+        <div class="stat-item">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span>
+          </div>
+          <div class="stat-number">4.8</div>
+          <div class="stat-desc">Average rating on<br>Chrome Web Store</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100<span>%</span></div>
+          <div class="stat-desc">Free, forever.<br>No account needed.</div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="testimonials-label">
+        <div class="section-label">What traders say</div>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">Watchlist Pro is a very useful extension. It does exactly what I need without any issues and makes tracking much easier.  Excellent extension - clean, efficient, and very effective. Highly recommend it.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: linear-gradient(135deg, #00D4AA, #00A882);">AK</div>
+            <div>
+              <div class="author-name">Aman Kaushik</div>
+              <div class="author-meta">Trader · Chrome Web Store</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">This just works and provide the much needed import from screeners like chartlink etc, yes bit of excel for adding NSE: in front symbol, but today with any AI tool, it's peice of cake. 
+I will start using this regularly.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: linear-gradient(135deg, #818CF8, #6366F1);">AB</div>
+            <div>
+              <div class="author-name">Amit Bajaj</div>
+              <div class="author-meta">Trader · Chrome Web Store</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">Watchlist pro for zerodha extension is valuable tool.  it would be perfect if you create an option to move/rearrange watchlist. Thank you for making this extension.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: linear-gradient(135deg, #F59E0B, #D97706);">DB</div>
+            <div>
+              <div class="author-name">Durgesh Boricha</div>
+              <div class="author-meta">Trader · Chrome Web Store</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CWS link -->
+      <div style="text-align:center; margin-top:36px;">
+        <a href="https://chromewebstore.google.com/detail/watchlist-pro-for-zerodha/ohjphldpkknbnekcopajlhdbcndgldji/reviews"
+          target="_blank" class="cws-badge">
+            ↗ Read all reviews on Chrome Web Store
+        </a>
+      </div>
+
+    </div>
+  </section>
   <!-- FEATURES -->
   <section id="features">
     <div class="container">
@@ -1334,7 +1631,8 @@
             <span class="comment"># Up to 1000 lines per import</span>
           </div>
           <p style="font-size:13px;color:var(--gray-500);margin-top:16px;line-height:1.6">
-            F&amp;O symbols can also be added in the same way. <strong>For newly-listed/IPO stocks, go to Settings → Update
+            F&amp;O symbols can also be added in the same way. <strong>For newly-listed/IPO stocks, go to Settings →
+              Update
               Symbols inside the extension.</strong>
           </p>
         </div>
@@ -1449,7 +1747,8 @@
           <div class="faq-body">
             <p style="margin-bottom:10px">Yes, it is completely safe to install. This warning appears for users who have
               <a href="https://support.google.com/chrome/answer/9890866" target="_blank">Enhanced protection</a> enabled
-              in Chrome settings.</p>
+              in Chrome settings.
+            </p>
             <p style="margin-bottom:10px">Because this extension was published from a newer developer account, it takes
               a few months to build trust status on the Chrome Web Store.</p>
             <p><a
