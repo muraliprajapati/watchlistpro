@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GH29KPJRMK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GH29KPJRMK');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import Utility · Watchlist Pro for Kite</title>
+  <link rel="icon" type="image/png" href="./images/icon-48.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0A0F1E;
+      --navy-mid: #111827;
+      --navy-card: #161D2E;
+      --navy-border: #1E2A40;
+      --teal: #00D4AA;
+      --teal-dim: rgba(0, 212, 170, 0.12);
+      --teal-border: rgba(0, 212, 170, 0.3);
+      --red: #F6461A;
+      --white: #FFFFFF;
+      --gray-500: #6B7A99;
+      --gray-700: #3D4A66;
+      --text-primary: #E8ECF4;
+      --text-secondary: #8A96B0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--navy);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--teal), #00A882);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--navy);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a.active {
+      color: var(--teal);
+    }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--navy) !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.88;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .mobile-menu {
+      display: none;
+      background: var(--navy-card);
+      border-bottom: 1px solid var(--navy-border);
+      padding: 16px 24px;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 10px 0;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu a.active {
+      color: var(--teal);
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 64px 24px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(0, 212, 170, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .page-sub {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── MAIN TOOL AREA ── */
+    .tool-wrap {
+      flex: 1;
+      padding: 40px 24px 80px;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ── EXCHANGE SELECTOR ── */
+    .exchange-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .exchange-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-right: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .exchange-btn {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .exchange-btn input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .exchange-btn span {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--navy-border);
+      background: var(--navy-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .exchange-btn input:checked+span {
+      background: var(--teal-dim);
+      border-color: var(--teal-border);
+      color: var(--teal);
+    }
+
+    .exchange-btn span:hover {
+      border-color: var(--gray-500);
+      color: var(--text-primary);
+    }
+
+    .exchange-btn input:checked+span:hover {
+      color: var(--teal);
+    }
+
+    /* ── TWO-COLUMN EDITOR ── */
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .editor-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .editor-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .editor-col-label {
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .editor-col-badge {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gray-500);
+      background: var(--navy-mid);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 280px;
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    textarea::placeholder {
+      color: var(--gray-700);
+    }
+
+    textarea:focus {
+      border-color: var(--teal-border);
+      box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.06);
+    }
+
+    textarea[readonly] {
+      background: var(--navy-mid);
+      color: var(--teal);
+      cursor: default;
+    }
+
+    textarea[readonly]:focus {
+      border-color: var(--navy-border);
+      box-shadow: none;
+    }
+
+    /* ── ACTIONS ── */
+    .actions-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal);
+      color: var(--navy);
+      padding: 11px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 212, 170, 0.28);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-primary);
+      padding: 11px 24px;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 14px;
+      border: 1px solid var(--navy-border);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gray-500);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-secondary svg,
+    .btn-primary svg {
+      flex-shrink: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--navy-border);
+      margin: 40px 0;
+    }
+
+    /* ── HOW IT WORKS MINI STRIP ── */
+    .how-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--navy-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .how-item {
+      background: var(--navy-card);
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .how-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .how-text h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .how-text p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .how-text code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: var(--teal-dim);
+      color: var(--teal);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      /* position: fixed; */
+      /* bottom: 28px; */
+      /* right: 28px; */
+      background: var(--navy-card);
+      border: 1px solid var(--teal-border);
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-card);
+      border-top: 1px solid var(--navy-border);
+      padding: 32px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--teal);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+
+      textarea {
+        height: 200px;
+      }
+
+      .how-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .actions-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        justify-content: center;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-binoculars-icon lucide-binoculars">
+            <path d="M10 10h4" />
+            <path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3" />
+            <path
+              d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z" />
+            <path d="M 22 16 L 2 16" />
+            <path
+              d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z" />
+            <path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3" />
+          </svg>
+        </div>
+        Watchlist Pro
+      </a>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#get-started">Get started</a></li>
+        <li><a href="index.html#pre-made-watchlists">Pre-made Watchlists</a></li>
+        <li><a href="index.html#faqs">FAQs</a></li>
+        <li><a href="import-tool.html" class="active">Import Utility</a></li>
+        <li>
+          <a href="https://chromewebstore.google.com/detail/watchlist-pro/ohjphldpkknbnekcopajlhdbcndgldji"
+            target="_blank" class="nav-cta">
+            Add to Chrome
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#get-started">Get started</a>
+      <a href="index.html#pre-made-watchlists">Pre-made Watchlists</a>
+      <a href="index.html#faqs">FAQs</a>
+      <a href="import-tool.html" class="active">Import Utility</a>
+      <a href="https://chromewebstore.google.com/detail/watchlist-pro/ohjphldpkknbnekcopajlhdbcndgldji"
+        target="_blank">Add to Chrome →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="section-label">Watchlist Pro</div>
+    <h1 class="page-title">Import Utility</h1>
+    <p class="page-sub">Paste plain stock symbols and convert them to the <code
+        style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--teal)">EXCHANGE:SYMBOL</code> format
+      Watchlist Pro expects.</p>
+  </div>
+
+  <!-- TOOL -->
+  <div class="tool-wrap">
+
+    <!-- Exchange selector -->
+    <div class="exchange-row">
+      <span class="exchange-label">Exchange</span>
+      <label class="exchange-btn">
+        <input type="radio" name="exchange" value="NSE" checked>
+        <span>NSE</span>
+      </label>
+      <label class="exchange-btn">
+        <input type="radio" name="exchange" value="BSE">
+        <span>BSE</span>
+      </label>
+      <label class="exchange-btn">
+        <input type="radio" name="exchange" value="MCX">
+        <span>MCX</span>
+      </label>
+    </div>
+
+    <!-- Editor columns -->
+    <div class="editor-grid">
+      <div class="editor-col">
+        <div class="editor-col-header">
+          <span class="editor-col-label">Input</span>
+          <span class="editor-col-badge" id="input-count">0 symbols</span>
+        </div>
+        <textarea id="inputText"
+          placeholder="Paste symbols here — comma-separated or one per line&#10;&#10;RELIANCE&#10;TCS, HDFCBANK&#10;INFY"></textarea>
+      </div>
+      <div class="editor-col">
+        <div class="editor-col-header">
+          <span class="editor-col-label">Output</span>
+          <span class="editor-col-badge" id="output-count">ready to copy</span>
+        </div>
+        <textarea id="outputText" readonly
+          placeholder="Converted output appears here&#10;&#10;NSE:RELIANCE&#10;NSE:TCS&#10;NSE:HDFCBANK&#10;NSE:INFY"></textarea>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="actions-row">
+      <button class="btn-primary" onclick="processInput()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+        Convert &amp; Copy Output
+      </button>
+      <!-- <button class="btn-secondary" onclick="copyToClipboard()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </svg>
+        Copy to clipboard
+      </button> -->
+      <button class="btn-secondary" onclick="clearAll()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path
+            d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+        </svg>
+        Clear
+      </button>
+      <!-- TOAST -->
+      <div class="toast" id="toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+        Copied to clipboard!
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- How it works strip -->
+    <div style="margin-bottom:20px">
+      <div class="section-label">How to use</div>
+    </div>
+    <div class="how-strip">
+      <div class="how-item">
+        <div class="how-num">1</div>
+        <div class="how-text">
+          <h4>Paste your symbols</h4>
+          <p>Enter ticker symbols in the Input box — one per line, or comma-separated. No exchange prefix needed.</p>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">2</div>
+        <div class="how-text">
+          <h4>Pick exchange &amp; convert</h4>
+          <p>Select <code>NSE</code>, <code>BSE</code>, or <code>MCX</code> above, then hit Convert. The output is
+            formatted as <code>EXCHANGE:SYMBOL</code>.</p>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">3</div>
+        <div class="how-text">
+          <h4>Copy &amp; import</h4>
+          <p>Click Copy to clipboard, then paste into Watchlist Pro's Import dialog. Up to <code>1000</code> symbols at
+            once.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-binoculars-icon lucide-binoculars">
+            <path d="M10 10h4" />
+            <path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3" />
+            <path
+              d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z" />
+            <path d="M 22 16 L 2 16" />
+            <path
+              d="M4 21a2 2 0 0 1-2-2v-3.851c0-1.39 2-2.962 2-4.829V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2z" />
+            <path d="M9 7V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v3" />
+          </svg>
+        </div>
+        Watchlist Pro
+      </a>
+      <div class="footer-links">
+        <a href="https://chromewebstore.google.com/detail/watchlist-pro/ohjphldpkknbnekcopajlhdbcndgldji"
+          target="_blank">Write a review</a>
+        <a href="index.html">Back to home</a>
+        <a href="mailto:mpdevlabs@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+    // Live input counter
+    const inputEl = document.getElementById('inputText');
+    const inputCount = document.getElementById('input-count');
+
+    inputEl.addEventListener('input', () => {
+      const raw = inputEl.value.trim();
+      if (!raw) { inputCount.textContent = '0 symbols'; return; }
+      const count = raw.split(/[\n,]/).map(s => s.trim()).filter(s => s.length > 0).length;
+      inputCount.textContent = count === 1 ? '1 symbol' : `${count} symbols`;
+    });
+
+    function processInput() {
+      const inputText = inputEl.value.trim();
+      const exchange = document.querySelector('input[name="exchange"]:checked').value;
+
+      if (!inputText) return;
+
+      const symbols = inputText
+        .split(/[\n,]/)
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+
+      const output = symbols.map(s => `${exchange}:${s.toUpperCase()}`).join('\n');
+      document.getElementById('outputText').value = output;
+
+      const outCount = document.getElementById('output-count');
+      outCount.textContent = symbols.length === 1 ? '1 line' : `${symbols.length} lines`;
+      copyToClipboard();
+    }
+
+    function copyToClipboard() {
+      const output = document.getElementById('outputText');
+      if (!output.value) return;
+
+      navigator.clipboard.writeText(output.value).catch(() => {
+        output.select();
+        document.execCommand('copy');
+      });
+
+      showToast();
+    }
+
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('outputText').value = '';
+      document.getElementById('input-count').textContent = '0 symbols';
+      document.getElementById('output-count').textContent = 'ready to copy';
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // Allow Ctrl+Enter to convert
+    inputEl.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') processInput();
+    });
+  </script>
+
+</body>
+
+</html>
